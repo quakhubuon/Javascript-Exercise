@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function kt (num) {
+            switch(num) {
+                case 0:
+                    return ("");
+                case 1:
+                    var number = prompt("Nhap so can kt:");
+                    var flag = true;
+                    if (number < 2)
+                    {
+                        flag = false;
+                    }
+                    else
+                    {
+                        for (var i = 2;i <= Math.sqrt(number);i++)
+                        {
+                            if (number % i == 0)
+                                flag = false;
+                        }
+                    }
+                    return flag;
+                    break;
+                case 2:
+                    var number = prompt("Nhap so can kt:");
+                    var sqr = Math.sqrt(number);
+                    var flag = false;
+                    if (sqr*sqr == number)
+                        flag = true;
+                    else
+                        flag = false;
+                    return flag;
+                    break;
+                case 3:
+                    var number = prompt("Nhap so can kt:");
+                    var s = 0;
+                    var flag = false;
+                    for (var i = 1;i < number;i++)
+                    {
+                        if (number % i == 0 )
+                        {
+                            s += i;
+                        }
+                    }
+                    if (s == number)
+                    {
+                        flag = true;
+                    }
+                    return flag;
+                    break;
+            }
+        }
+    </script>
+
+    <center>
+        <form name="form">
+            <table border="1"> 
+                <tr>
+                    <td>
+                        <select name="list" id="form-list" onchange="form.output.value=kt(selectedIndex);">
+                            <option value="">Lựa chọn</option>
+                            <option value="SNT">Số nguyên tố</option>
+                            <option value="SCP">Số chính phương</option>
+                            <option value="SHH">Số hoàn hảo</option>
+                        </select>
+                    </td>
+                    <td>Kết quả: <input type="text" name="output"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

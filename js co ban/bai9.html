@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function main(num) {
+            switch(num) {
+                case 0:
+                    return ("");
+                case 1:
+                    let str = prompt("Nhập chuỗi:");
+                    let reverse = "";
+                    for (let i = str.length - 1; i >=0; i--)
+                    {   
+                        reverse += str[i];
+                    }
+                    return reverse;
+                    break;
+                case 2:
+                    let str2 = prompt("Nhập chuỗi:");
+                    let upper = str2;
+                    return document.form.value = upper.toUpperCase();
+                    break;
+            }
+        }
+    </script>
+
+    <center>
+        <form action="" name="form">
+            <table border="1">
+                <tr>
+                    <td>
+                        <select name="list" id="" onchange="form.output.value = main(selectedIndex)">
+                            <option value="">Lựa chọn</option>
+                            <option value="1">Viết hàm trả về chuỗi đảo ngược</option>
+                            <option value="2">Viết hàm trả về chuỗi in hoa</option>
+                        </select>
+                    </td>
+                    <td>
+                        Kết quả: <input type="text" name="output" id="result">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ucln () {
+            var z, x, y;
+            x = document.form.a.value;
+            y = document.form.b.value;
+            while (y != 0)
+            {
+                z = x % y;
+                x = y;
+                y = z;
+            }
+            return x;
+        }
+
+        function bcnn () {
+            var kq_ucln = ucln();
+            var kq_bcnn = (document.form.a.value * document.form.b.value) / kq_ucln;
+            document.form.output_bcnn.value = kq_bcnn;
+            document.form.output_ucln.value = kq_ucln;
+        }
+    </script>
+
+    <center>
+        <form name="form">
+            <table border="1">
+                <tr>
+                    <td>Mời nhập số a: <br> <input type="text" name="a"></td>
+                    <td>Mời nhập số b: <br> <input type="text" name="b"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><center><input type="button" value="Tính" onclick="bcnn()"></td></center>
+                </tr>
+                <tr>
+                    <td>Bội số chung nhỏ nhất <br> <input type="text" name="output_bcnn"></td>
+                    <td>Ước số chung lớn nhất <br> <input type="text" name="output_ucln"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

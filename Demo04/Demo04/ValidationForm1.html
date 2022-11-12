@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Validate Form 1</title>
+</head>
+
+<body>
+
+    <script>
+        //Validate URL
+
+        /* var str = "http://www.google.com.vn";
+         var patt = "http:\/\/www." + "";
+
+         //document.write(patt);
+         var output = str.match(patt);
+         var flag = patt.test(str);
+         document.write("<br/>" + output); //Bài tập cho sv*/
+
+        //replace special characters
+        var str = "${}Pha]n=@~ .|^:!? Lo%#an+* Ki('m";
+        document.write("<br/>" + str.replace(/([.*+'?^=!#@~%&:${}()|\[\]\/\\])/g, ""));
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function main (num) {
+            var i, j;
+            switch(num) {
+                case 1: 
+                    var n = prompt("Nhap so phan tu cua mang:");
+                    let a = [n];
+                    let t = [n];
+                    for (i = 0; i < n;i++)
+                    {
+                        a[i] = prompt("Nhap chuoi");
+                    }
+                    for (i = 1; i < 5; i++) 
+                    {
+                        for (j = 1; j < 5; j++) 
+                        {
+                            if (strcmp(a[j - 1], a[j]) > 0) 
+                            {
+                                strcpy(t, a[j - 1]);
+                                strcpy(a[j - 1], a[j]);
+                                strcpy(a[j], t);
+                            }
+                        }
+                    }
+                    for (i = 0; i < n;i++)
+                    {
+                        document.writeln(a[i] + " ");
+                    }
+                    break;
+            }
+        }
+    </script>
+
+    <center>
+        <form action="" name="form">
+            <table border="1">
+                <tr>
+                    <td>
+                        <select name="list" id="" onchange="form.output.value = main(selectedIndex)">
+                            <option value="">Lựa chọn</option>
+                            <option value="1">Sắp xếp mảng theo thứ tự a, b, c</option>
+                            <option value="2">Tìm vị trí của chuỗi dài nhất mảng</option>
+                        </select>
+                    </td>
+                    <td>
+                        Kết quả: <input type="text" name="output" id="result">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

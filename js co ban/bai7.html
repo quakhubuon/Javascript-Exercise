@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function main(num) {
+            var a = [100];
+            var temp;
+            var min;
+            var result;
+            switch(num) {
+                case 0:
+                    return ("");
+                case 1:
+                    var n = prompt("Nhap so luong phan tu:");
+                    for (var i = 0;i < n;i++)
+                    {
+                        a[i] = prompt("Nhap gia tri:");
+                    }
+                    min = a[0];
+                    for (var i = 0;i < n;i++)
+                    {
+                        if (min > a[i])
+                            min = a[i];
+                    }
+                    return min;
+                    break;
+                case 2:
+                    var n = prompt("Nhap so luong phan tu:");
+                    for (var i = 0;i < n;i++)
+                    {
+                        a[i] = prompt("Nhap gia tri:");
+                    }
+                    for (var i = 0;i < n - 1;i++)
+                    {
+                        for (var j = i + 1;j < n;j++)
+                        {
+                            if (a[i] < a[j])
+                            {
+                                temp = a[i];
+                                a[i] = a[j];
+                                a[j] = temp;
+                            }
+                        }
+                    }
+                    for (var i = 0;i < n;i++)
+                    {
+                        document.writeln(a[i] + " ");
+                    }
+                    break;
+                case 3:
+                    var n = prompt("Nhap so luong phan tu:");
+                    for (var i = 0;i < n;i++)
+                    {
+                        a[i] = prompt("Nhap gia tri:");
+                    }
+                    for(var i=0;i<=n/2;i++)
+                    {
+                        temp=a[i];
+                        a[i]=a[n-1-i];
+                        a[n-1-i]=temp;
+                    }
+                    for (var i = 0;i < n;i++)
+                    {
+                        document.writeln(a[i] + " ");
+                    }
+                    break;
+            }
+        }
+    </script>
+
+    <center>
+        <form action="" name="form">
+            <table border="1">
+                <tr>
+                    <td>
+                        <select name="list" id="" onchange="form.output1.value = main(selectedIndex)">
+                            <option value="">Lựa chọn</option>
+                            <option value="1">Tìm số dương nhỏ nhất mảng</option>
+                            <option value="2">Sắp xếp mảng giảm dần</option>
+                            <option value="3">Đảo thứ tự mảng</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kết quả <br> <input style="width:200px" type="text" name="output1"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

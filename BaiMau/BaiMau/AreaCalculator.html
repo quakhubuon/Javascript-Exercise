@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Area Calculator</title>
+
+    <script language="" "JavaScript">
+        /*-- Begin -->*/
+        function doArea(num) {
+            var DT = 0;
+            switch (num) {
+                case 0:
+                    return ("");
+                    break;
+                case 1:
+                    //var length = prompt("Nhập cạnh của hình vuông", "");
+                    var canh = document.getElementById("thongso");
+                    canh.innerHTML = "Nhập cạnh hình vuông : <input type='text' name='ts1' >";
+                    DT = length * length;
+                    calcarea.area.value = DT;
+                    break;
+                case 2:
+                    //var width = prompt("Nhập cạnh của tam giác:", "");
+                    //var height = prompt("Nhập chiều cao của tam giác:", "");
+                    var canh = document.getElementById("thongso");
+                    canh.innerHTML = "Nhập canh : <input type='text' name='canhtamgiac'>  Nhập chiều cao: <input type='text' name='cao' >";
+                    DT = width * height / 2;
+                    calcarea.area.value = DT;
+                    break;
+                case 3:
+                    //var width = prompt("Nhập chiều dài của hình chữ nhật:", "");
+                    //var height = prompt("Nhập chiều cao của hình chữ nhật:", "");
+                    var canh = document.getElementById("thongso");
+                    canh.innerHTML = "Nhập chiều rộng : <input type='text' name='rong'>  Nhập chiều dài: <input type='text' name='dai' >";
+                    DT = width * height;
+                    calcarea.area.value = DT;
+                    break;
+            }
+
+        }
+
+        /*function Tinh(hinh`) {
+            alert(hinh);
+            calcarea.area.value = hinh;
+        }*/
+        /*//  End -->*/
+    </script>
+
+</head>
+
+<body>
+    <center>
+        <form name="calcarea">
+            Tính diện tích của
+            <table border="1">
+                <tr>
+                    <td>
+                        <!-- <select name="shape" size="1" onChange=" form.area.value = doArea(this.selectedIndex);" > -->
+                        <select name="shape" size="1" onChange="doArea(selectedIndex);">
+                                <option> Chọn lựa </option>
+                          		<option value="square">Hình vuông</option>
+                                <option value="triangle">Hình tam giác </option>
+                                <option value="rectangle">Hình chữ nhật </option>
+                               
+                       	  </select>
+                    </td>
+                    <td> <input type="text" name="area" size="20"> </td>
+                    <td> <input type="button" name="Tinh" value="Tính diện tích" onclick="Tinh(calcarea.shape.selectedIndex);"> </td>
+                </tr>
+
+            </table>
+            <div id="thongso"> Vùng nhận thông số </div>
+        </form>
+        <h1>&nbsp;</h1>
+    </center>
+
+</body>
+
+</html>

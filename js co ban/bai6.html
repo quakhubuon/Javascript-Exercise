@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gptb1(num) {
+            var result;
+            var x1, x2, delta;
+            switch(num) {
+                case 0:
+                    return("");
+                case 1:
+                    var a = prompt("Nhap so a de tinh ptb1:");
+                    var b = prompt("Nhap so b de tinh ptb1:");
+                    var c = prompt("Nhap so c de tinh ptb1:");
+                    if (a == 0)
+                    {
+                        if (b == 0)
+                        {
+                            result = "vô số nghiệm";
+                        }
+                        else
+                        {
+                            result = "vô nghiệm";
+                        }
+                    }
+                    else
+                    {
+                        result = -b/a;
+                    }
+                    return result;
+                    break;
+            }
+        }
+
+        function gptb2(num) {
+            var result;
+            var x1 =0, x2=0, delta=0;
+            switch(num) {
+                case 0:
+                    return("");
+                case 2:
+                    var a = prompt("Nhap so a de tinh ptb2:");
+                    var b = prompt("Nhap so b de tinh ptb2:");
+                    var c = prompt("Nhap so c de tinh ptb2:");
+                    if (a == 0)
+                    {
+                        if (b == 0)
+                        {
+                            if (c == 0)
+                            {
+                                result = "Vô số nghiệm";
+                            }
+                            else
+                            {
+                                result = "Vô nghiệm";
+                            }
+                        }
+                        else
+                        {
+                            result = -c/b;
+                        }
+                    }
+                    else
+                    {
+                        delta = b*b - 4*a*c;
+                        if (delta > 0)
+                        {
+                            x1 = (-b + Math.sqrt(delta)) / (2*a);
+                            x2 = (-b - Math.sqrt(delta)) / (2*a);
+                            result = x1 + ", " + x2;
+                        }
+                        else if (delta == 0)
+                        {
+                            x1 = x2 = -b/(2*a);
+                            result = x1 + ", " + x2;
+                        }
+                        else
+                        {
+                            x1 = x2 = "Vô nghiệm"; 
+                            result = x1 + ", " + x2;
+                        }
+                    }
+                    return result;
+                    break;
+            }
+        }
+    </script>
+
+    <center>
+        <form action="" name="form">
+            <table border="1">
+                <tr>
+                    <td>
+                        <select name="list" id="" onchange="form.output.value = gptb1(selectedIndex); form.output1.value = gptb2(selectedIndex)">
+                            <option value="">Lựa chọn</option>
+                            <option value="ptb1">Giải phương trình bậc 1</option>
+                            <option value="ptb2">Giải phương trình bậc 2</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Giải phương trình bậc 1 </td>
+                    <td>Kết quả nghiệm x: <br> <input type="text" name="output"></td>
+                </tr>
+                <tr>
+                    <td>Giải phương trình bậc 2 </td>
+                    <td>Kết quả nghiệm x1, x2: <br> <input type="text" name="output1"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

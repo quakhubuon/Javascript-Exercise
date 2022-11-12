@@ -1,0 +1,491 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Đăng ký chuyến bay</title>
+    <style type="text/css">
+        label {
+            display: block;
+            padding-top: 0.2em;
+            padding-bottom: 0.2em;
+        }
+        
+        div.fl {
+            float: left;
+            margin-right: 0.6em;
+        }
+        
+        select {
+            width: 11em;
+        }
+        
+        input[type="text"].date {
+            width: 3em;
+        }
+        
+        input[type="text"].year {
+            width: 4em;
+        }
+        
+        input[type="text"].totalPrice {
+            width: 16em;
+        }
+        
+        input[type="text"].firstName {
+            width: 16em;
+        }
+        
+        input[type="text"].lastName {
+            width: 6em;
+        }
+        
+        input[type="text"].address {
+            width: 23em;
+        }
+        
+        input[type="text"].idCard {
+            width: 23em;
+        }
+        
+        input[type="text"].mobile {
+            width: 11em;
+        }
+        
+        input[type="text"].email {
+            width: 11em;
+        }
+        
+        input[type="text"].creditName {
+            width: 23em;
+        }
+        
+        input[type="text"].creditNo {
+            width: 16em;
+        }
+        
+        input[type="text"].creditExpire {
+            width: 6em;
+        }
+        
+        div#mainForm {
+            border:
+        }
+        
+        div#submit {
+            padding-top: 0.2em;
+            clear: both;
+        }
+        
+        div#sum {
+            padding-top: 0.3em;
+            clear: both;
+        }
+        
+        div#left {
+            float: left;
+        }
+        
+        div#right {
+            float: right;
+        }
+        
+        div.sep {
+            float: left;
+            margin-left: 0.0em;
+            margin-right: 0.6em;
+            padding-top: 1.8em;
+        }
+        
+        div.simple {
+            float: left;
+            padding-top: 0.5em;
+        }
+        
+        fieldset {
+            /*width: 12em;*/
+            width: 17em;
+            margin-bottom: 0.2em;
+        }
+    </style>
+    <!-- Nhập javascript xử lý form vào bên đưới đây -->
+    <script type="text/javascript">
+        function change(num) {
+            var change= document.getElementById('groupDateReturn');
+            switch(num.value)
+            {
+                case 'oneway':
+                    change.disabled = true;
+                    break;
+                case 'return':
+                    change.disabled = false;
+                default:
+                    break;
+            }
+        }
+
+        function flight(num) {
+            var to  = document.getElementById('to');
+            var to1 = document.getElementById('to').options[1];
+            var to2 = document.getElementById('to').options[2];
+            var to3 = document.getElementById('to').options[3];
+            var to4 = document.getElementById('to').options[4];
+            switch(num) {
+                case 1:
+                    to1.disabled = true;
+                    to.focus();
+                    break;
+                case 2:
+                    to2.disabled = true;
+                    to4.disabled = true;
+                    to.focus();
+                    break;
+                case 3:
+                    to3.disabled = true;
+                    to4.disabled = true;
+                    to.focus();
+                    break;
+                case 4:
+                    to2.disabled = true;
+                    to3.disabled = true;
+                    to4.disabled = true;
+                    to.focus();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function caculate() {
+            var from = document.getElementById('from').value;
+            var to = document.getElementById('to').value;
+            var oneway1 = document.getElementById('direction_1').checked;
+            var return2 = document.getElementById('direction_2').checked;
+        
+            var s ="";
+            if (oneway1)
+            {
+                if (from == "SGN" && to == "HN" || from == "HN" && to == "SGN") {
+                    s += "1.000.000 đồng";
+                }
+                else if (from == "HN" && to == "SGN") {
+                    s += "1.000.000 đồng";
+                }
+                else if (from == "SGN" && to == "DN" || from == "HN" && to == "DN") {
+                    s += "900.000 đồng";
+                }
+                else if (from == "DN" && to == "SGN" || from == "DN" && to == "HN") {
+                    s += "800.000 đồng";
+                }
+                else if (from == "SGN" && to == "CD" || from == "CD" && to == "SGN") {
+                    s += "600.000 đồng";
+                }
+                document.getElementById('result').value = s;
+            }
+            
+            else if (return2)
+            {
+                if (from == "SGN" && to == "HN" || from == "HN" && to == "SGN") {
+                    s += "1.700.000 đồng";
+                }
+                else if (from == "SGN" && to == "DN" || from == "HN" && to == "DN") {
+                    s += "1.530.000 đồng";
+                }
+                else if (from == "DN" && to == "SGN" || from == "DN" && to == "HN") {
+                    s += "1.360.000 đồng";
+                }
+                else if (from == "SGN" && to == "CD" || from == "CD" && to == "SGN") {
+                    s += "1.020.000 đồng";
+                }
+                document.getElementById('result').value = s;
+            }
+        }
+
+        function Draw() {
+            var n = document.getElementById('diamondSize').value;
+            var count = 0;
+            if (isNaN(n))
+            {
+                alert('Value is not ok');
+            }
+            else 
+            {
+                if (n > 0 && n < 6)
+                {
+                    var s = "<table>";
+                    for (i = 1; i <= n; i++)
+                    {
+                        s = s + "<tr>";
+                        for (j = 1; j <= n - i; j++)
+                        {
+                            s = s + "<td>" + ("&nbsp;&nbsp;") +  "</td>";;
+                        }
+                        for (k = 1; k <= 2*i-1; k++)
+                        {
+                            count++;
+                            s = s + "<td>" + count + ("&nbsp;&nbsp;") +  "</td>";
+                        }
+                        s = s + "</tr>";
+                    }
+                    s = s + "</table>";
+                    var DrawObj = document.getElementById("VungVe");
+                    DrawObj.innerHTML = s;
+                }
+                else
+                {
+                    alert('Value must 0 < n < 6');
+                }
+            }
+        }
+
+        function checked() {
+            var chk1 = document.getElementById('idGT1').checked;
+            var chk2 = document.getElementById('idGT2').checked;
+            if(chk1 || chk2)
+            {
+                return true;
+            }
+            alert("Hãy chọn giới tính!");
+            return false
+        }   
+
+        function card(num) {
+            var value = document.getElementById('creditNo').value;
+            var flag = false;
+            switch(num) {
+                case 0:
+                    return ("");
+                case 1:
+                    var pattern = /^4\d{12,15}$/;
+                    if(value.match(pattern)){
+                        flag = true;
+                    }
+                    else{
+                        flag = false;
+                    }
+                    return flag;
+                    break;
+                case 2:
+                    var pattern = /5[1-5]\d{14}/;
+                    if(value.match(pattern)){
+                        flag = true;
+                    }
+                    else{
+                        flag = false;
+                    }
+                    return flag;
+                    break;
+                case 3:
+                    var pattern = /3(4|7)\d{13}$/;
+                    if(value.match(pattern)){
+                        flag = true;
+                    }
+                    else{
+                        flag = false;
+                    }
+                    return flag;
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+    <!-- Kết thúc javascript xử lý form -->
+</head>
+
+<body onload="change(document.getElementById('direction_1'))">
+    <form action="xuly.php" method="get" onsubmit="return checked() && card(document.getElementById('creditType').selectedIndex)">
+        <div id="mainForm">
+            <div id="left">
+                <fieldset id="groupCalculate">
+                    <legend>Hãng hàng không</legend>
+                    <div>
+                        <div class="fl" align="center">
+                            <img src="images/Plane.png" width="70%" />
+                        </div>
+                    </div>
+                    <div></div>
+                </fieldset>
+                <fieldset id="groupFlight">
+                    <legend>Chuyến bay</legend>
+                    <div class="fl">
+                        <label for="from">Đi từ:</label>
+                        <select id="from" name="from" onchange="flight(selectedIndex);">
+				<option value="-1">Chọn nơi đi</option>
+				<option value="SGN">Sài Gòn</option>
+				<option value="HN">Hà Nội</option>
+				<option value="DN">Đà Nẵng</option>
+                <option value="CD">Côn Đảo</option>
+			</select>
+                    </div>
+                    <div class="fl">
+                        <label for="to">Đến:</label>
+                        <select id="to" name="to">
+				<option value="-1">Chọn nơi đến</option>
+				<option value="SGN">Sài gòn</option>
+				<option value="HN">Hà Nội</option>
+				<option value="DN">Đà Nẵng</option>
+                <option value="CD">Côn Đảo</option>
+			</select>
+                    </div>
+                    <div class="simple">
+                        Một chiều: <input id="direction_1" type="radio" name="direction" value="oneway" checked onclick="change(this);"/> 
+                        Khứ hồi: <input id="direction_2" type="radio" name="direction" value="return" onclick="change(this);" />
+                    </div>
+                </fieldset>
+                <fieldset id="groupDateTravel">
+                    <legend>Ngày đi</legend>
+                    <div class="fl">
+                        <label for="travelDay">Ngày</label>
+                        <select id="travelDay" name="travelDay" style="width:50px">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3" selected>29</option>
+			</select>
+                    </div>
+                    <div class="sep">/</div>
+                    <div class="fl">
+                        <label for="travelMonth">Tháng</label>
+                        <select id="travelMonth" name="travelMonth" style="width:80px">
+				<option value="1">Tháng 1</option>
+				<option value="2">Tháng 2</option>
+				<option value="3" selected>Tháng 3</option>
+			</select>
+                    </div>
+                    <div class="sep">/</div>
+                    <div class="fl">
+                        <label for="travelYear">Năm</label>
+                        <select id="travelYear" name="travelYear" style="width:70px">
+							<option value="2018">2018</option>
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+						</select>
+                    </div>
+                </fieldset>
+                <fieldset id="groupDateReturn">
+                    <legend>Ngày về</legend>
+                    <div class="fl">
+                        <label for="returnDay">Ngày</label>
+                        <select id="returnDay" name="returnDay" style="width:50px">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3" selected>30</option>
+			</select>
+                    </div>
+                    <div class="sep">/</div>
+                    <div class="fl">
+                        <label for="returnMonth">Tháng</label>
+                        <select id="returnMonth" name="returnMonth" style="width:80px">
+				<option value="1">Tháng 1</option>
+				<option value="2">Tháng 2</option>
+				<option value="3" selected>Tháng 3</option>
+			</select>
+                    </div>
+                    <div class="sep">/</div>
+                    <div class="fl">
+                        <label for="returnYear">Năm</label>
+                        <select id="returnYear" name="returnYear" style="width:70px">
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+			</select>
+                    </div>
+                </fieldset>
+
+            </div>
+            <div id="left">
+                <fieldset id="groupPassenger">
+                    <legend>Thông tin hành khách</legend>
+                    <div class="fl">
+                        <label for="passengerLastName">Họ (*)</label>
+                        <input type="text" id="passengerLastName" name="passengerLastName" class="lastName" required/>
+                    </div>
+                    <div class="fl">
+                        <label for="passengerFirstName">Tên(*)</label>
+                        <input type="text" id="passengerFirstName" name="passengerFirstName" class="firstName" required/>
+                    </div>
+                    <div class="fl">
+                        <label for="idCard">Số chứng minh thư(*)</label>
+                        <input type="text" id="idCard" name="idCard" class="idCard" pattern="^\d{9,10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$" required/>
+                    </div>
+                    <div class="fl">
+                        <label for="idGT">Giới tính (*)</label>
+                        <span>Nam <input type="radio" id="idGT1" name="idGT" class="idGT" /></span>
+                        <span>Nữ <input type="radio" id="idGT2" name="idGT" class="idGT" /></span>
+                    </div>
+                    <div class="fl">
+                        <label for="address">Địa chỉ(*)</label>
+                        <input type="text" id="address" name="address" class="address" required/>
+                    </div>
+                    <div class="fl">
+                        <label for="mobile">Điện thoại</label>
+                        <input type="text" id="mobile" name="mobile" class="mobile" pattern="^\d{10,12}$|^(\(\d{3}\)\s*)\d{4}$"/>
+                    </div>
+                    <div class="fl">
+                        <label for="address">Email</label>
+                        <input type="text" id="email" name="email" class="email" />
+                    </div>
+                </fieldset>
+                <fieldset id="groupPayment">
+                    <legend>Thông tin thanh toán</legend>
+                    <div class="fl">
+                        <label for="creditName">Họ tên chủ thẻ</label>
+                        <input type="text" id="creditName" name="creditName" class="creditName" />
+                    </div>
+                    <div class="fl">
+                        <label for="creditType">Loại thẻ</label>
+                        <select id="creditType" name="creditType" onchange="card(selectedIndex);">
+                <option value="">Lựa Chọn</option>
+				<option value="VISA">VISA</option>
+				<option value="MASTER">Master Card</option>
+				<option value="AMEX">American Express</option>
+			</select>
+                    </div>
+                    <div class="fl">
+                        <label for="creditNo">Số thẻ</label>
+                        <input type="text" id="creditNo" name="creditNo" class="creditNo" />
+                    </div>
+                    <div class="fl">
+                        <label for="creditExpire">Thời hạn</label>
+                        <input type="text" id="creditExpire" name="creditExpire" class="creditExpire" />
+                    </div>
+                </fieldset>
+            </div>
+            <div id="right">
+                <fieldset id="groupPrice">
+                    <div class="fl price">
+                        Tạm tính: <span id="price">(VNĐ)	</span>
+                    </div>
+                    <div id="sum">
+                        <input type="button" value="Tính tiền" onclick="caculate();" />
+                        <input type="text" class="totalPrice" id="result"/>
+                    </div>
+                </fieldset>
+                <fieldset id="groupSubmit">
+                    <div id="submit">
+                        <input type="submit" value="Đặt vé"/>
+                        <input type="reset" value="Nhập lại" />
+                    </div>
+                </fieldset>
+                <fieldset id="groupDraw">
+                    <legend>Vẽ hình</legend>
+                    <div class="fl">
+                        <label for="diamondSize">Kích thước <i>(n nguyên, 0&lt;n&lt;6 )</i></label>
+                        <label><i> {hình vẽ minh hoạ cho n = 3}</i></label>
+                        <input type="text" id="diamondSize" name="diamondSize" class="diamondSize" value="3" />
+                        <input type="button" value="Vẽ và tính" onclick="Draw()"/>
+                    </div>
+                    <div class="fl" id="VungVe">
+                        <img src="images/diamond.png" />
+                    </div>
+                </fieldset>
+                <fieldset id="MSSV">
+                    <div><i>Họ tên: Nguyễn Văn A </i></div>
+                    <div><i>MSSV: 123456789 </i></div>
+                </fieldset>
+            </div>
+        </div>
+
+    </form>
+</body>
+
+</html>

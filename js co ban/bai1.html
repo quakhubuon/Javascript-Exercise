@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getArea (num) {
+            var DT = 0;
+            switch (num)
+            {
+                case 0:
+                    return ("");
+                case 1: 
+                    var canh = prompt("Nhập cạnh hình vuông de tinh dien tich:");
+                    return DT = canh * canh;
+                    break;
+                case 2:
+                    var r = prompt("Nhap ban kinh r de tinh dien tich:");
+                    return DT = r*r*3.14;
+                    break;
+                case 3:
+                    var a = prompt("Nhap canh day de tinh dien tich:");
+                    var b = prompt("Nhap canh tam giac de tinh dien tich:");
+                    var c = prompt("Nhap canh tam giac de tinh dien tich:");
+                    var h = prompt("Nhap chieu cao de tinh dien tich:");
+                    return DT = (a*h)/2;
+                    break;
+            }
+        }
+
+        function getPerimeter (num) {
+            var CV = 0;
+            switch (num)
+            {
+                case 0:
+                    return ("");
+                case 1: 
+                    var canh = prompt("Nhập cạnh hình vuông de tinh CV:");
+                    return CV = canh * 4;
+                    break;
+                case 2:
+                    var r = prompt("Nhap ban kinh r de tinh CV:");
+                    return CV = 2*3.14*r;
+                    break;
+                case 3:
+                    var a = prompt("Nhap canh day de tinh CV:");
+                    var b = prompt("Nhap canh tam giac de tinh CV:");
+                    var c = prompt("Nhap canh tam giac de tinh CV:");
+                    return CV = a + b + c;
+                    break;
+            }
+        }
+    </script>
+
+    <center>
+        <form action="" name="form">
+            <table border="1">
+                <tr>
+                    <td>
+                        <select name="list" id="form-list" onchange="form.output_CV.value = getPerimeter(selectedIndex); form.output_DT.value = getArea(selectedIndex);">
+                            <option value="">Chọn lựa</option>
+                            <option value="square">Hình vuông</option>
+                            <option value="circle">Hình tròn</option>
+                            <option value="triangle">Hình tam giác</option>
+                        </select>
+                    </td>
+                    <td>Chu vi: <input type="text" name="output_CV"></td>
+                    <td>Dien tich: <input type="text" name="output_DT"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

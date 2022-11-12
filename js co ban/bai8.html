@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function main(num)
+        {
+            switch(num) {
+                case 0:
+                    return ("");
+                case 1:
+                    var N = prompt("Nhập chiều cao:");
+                    var s = 0;
+                    var count = 0;
+                    for (var i = 0;i < N;i++)
+                    {
+                        for (var j = 0;j <= i;j++)
+                        {
+                            count++;
+                            if (count % 2 == 0)
+                            {
+                                s = s + count;
+                            }
+                        }
+                    }
+                    return s;
+                    break;
+                case 2:
+                    var N = prompt("Nhập chiều cao:");
+                    var s = 0;
+                    var count = 0;
+                    for (var i = 0;i < N;i++)
+                    {
+                        for (var j = 0;j <= i;j++)
+                        {
+                            count++;
+                            if (j == 1)
+                            {
+                                s = s + count;
+                            }
+                        }
+                    }
+                    return s;
+                    break;
+                case 3:
+                    var N = prompt("Nhập chiều cao:");
+                    var s = 0;
+                    var count = 0;
+                    for (var i = 0;i < N;i++)
+                    {
+                        for (var j = 0;j <= i;j++)
+                        {
+                            count++;
+                            if (j == i)
+                            {
+                                s = s + count;
+                            }
+                        }
+                    }
+                    return s;
+                    break;
+            }
+        }
+    </script> 
+    <form action="" name="form">
+        <center>
+            <table border="1">
+                <tr>
+                    <td>
+                        <select name="list" id="" onchange="form.output.value = main(selectedIndex)">
+                            <option value="">Lựa chọn</option>
+                            <option value="1">Tính tổng các số chẵn trong tam giác số</option>
+                            <option value="2">Tính tổng cột đầu tiên</option>
+                            <option value="3">Tính tổng dòng cuối cùng</option>
+                        </select>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>Kết quả là: <input style="width:180px" type="text" name="output"></td>
+                </tr>
+            </table>
+        </center>
+    </form>
+</body>
+</html>
